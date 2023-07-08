@@ -1,0 +1,40 @@
+<?php
+
+namespace Tests;
+
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use LaravelGoogleCalendar\Infra\Providers\LaravelGoogleDriveServiceProvider;
+use Orchestra\Testbench\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase
+{
+    use Fixtures;
+
+    protected function getPackageProviders(mixed $app): array
+    {
+        return [
+            LaravelGoogleDriveServiceProvider::class,
+        ];
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $app->useEnvironmentPath(__DIR__ . '/..');
+        $app->bootstrapWith([LoadEnvironmentVariables::class]);
+
+        parent::getEnvironmentSetUp($app);
+    }
+
+    protected function instance(mixed $abstract, mixed $instance): object
+    {
+        /** @phpstan-ignore-next-line */
+        $this->app->bind(
+            $abstract,
+            function () use ($instance) {
+                return $instance;
+            }
+        );
+
+        return $instance;
+    }
+}
