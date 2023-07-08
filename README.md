@@ -15,6 +15,9 @@
 - [License](#license)
 
 ## Introduction
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/abb56009b2704908a6092651068ffb16)](https://app.codacy.com/gh/fnsc/laravel-google-calendar?utm_source=github.com&utm_medium=referral&utm_content=fnsc/laravel-google-calendar&utm_campaign=Badge_Grade)
+
 This library provides a simple and easy way to deal with [Google Drive](https://drive.google.com) files.
 
 ## Requirements
